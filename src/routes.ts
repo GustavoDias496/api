@@ -1,12 +1,13 @@
 import { Router } from 'express'
-import DocumentController from './database/DocumentController'
+import ProductController from './controllers/productController'
 
 const router = Router()
 
-router.get('/documents', DocumentController.getAll)
-router.get('/documents/:id', DocumentController.findById)
-router.post('/documents', DocumentController.create)
-router.put('/documents/:id', DocumentController.update)
-router.delete('/documents/:id', DocumentController.delete)
+
+router.get('/products', ProductController.getAllProducts)
+router.get('/products/:id', ProductController.getOneProduct)
+router.post('/products', ProductController.createProduct)
+router.put('/products/:id', ProductController.updateProduct)
+router.delete('/products/:id', ProductController.deleteProduct)
 
 export default router
