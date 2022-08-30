@@ -3,18 +3,19 @@ import mongoose from 'mongoose'
 import router from './routes'
 require('dotenv/config')
 
+const cors = require('cors')
 
 const DB_USER = process.env.DB_USER
 const DB_PASSWORD = process.env.DB_PASSWORD
 var PORT = process.env.PORT || 8000
 
 const app = express()
-
-app.use(function(req, res, next){
-    res.header('Access-Control-Allow-Origin', '*')
-    res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, PATCH');
-    res.header('Acesss-Control-Allow-Headers', '*')
-    next()
+app.use((req, res, next) =>{
+    //console.log('Acessou o middleware!')
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods",  'GET,PUT,POST,DELETE,PATCH')
+    app.use(cors());
+    next();
 })
 
 app.use(express.json())
