@@ -18,22 +18,6 @@ const ProductsController = {
     async createProduct(req:Request, res:Response): Promise<Response>{
         const { productName, value, amountSales, productCode, description} = req.body
 
-        if(!productName){
-            return res.status(422).json({error: 'Preencha todos os campos!'})
-        }
-        if(!value){
-            return res.status(422).json({error: 'Preencha todos os campos!'})
-        }
-        if(!amountSales){
-            return res.status(422).json({error: 'Preencha todos os campos!'})
-        }
-        if(!productCode){
-            return res.status(422).json({error: 'Preencha todos os campos!'})
-        }
-        if(!description){
-            return res.status(422).json({error: 'Preencha todos os campos!'})
-        }
-
         let product = await productModel.create(req.body)
         return res.json(product)
     },
