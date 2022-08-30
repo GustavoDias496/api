@@ -10,13 +10,12 @@ const DB_PASSWORD = process.env.DB_PASSWORD
 var PORT = process.env.PORT || 8000
 
 const app = express()
-app.use((req, res, next) =>{
-    //console.log('Acessou o middleware!')
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods",  'GET,PUT,POST,DELETE,PATCH')
-    app.use(cors());
-    next();
-})
+app.use(
+    cors({
+        origin: "*",
+        method: ['GET', 'POST', 'DELETE', 'DELETE', 'PATCH'],
+    })
+)
 
 app.use(express.json())
 app.use(router)
